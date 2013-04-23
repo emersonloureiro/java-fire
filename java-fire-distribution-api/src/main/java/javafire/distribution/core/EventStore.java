@@ -2,11 +2,11 @@ package javafire.distribution.core;
 
 import java.util.List;
 
+import javafire.api.Event;
+
 public interface EventStore {
 
-	void put(List<EventStoreItem> items) throws EventStoreException;
+	void put(List<Event> items) throws EventStoreException;
 
-	EventStoreItem take() throws EventStoreException;
-
-	int size();
+	Event take() throws EventStoreException;
 }

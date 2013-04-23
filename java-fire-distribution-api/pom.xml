@@ -7,4 +7,10 @@
 		<version>${java-fire-version}</version>
 	</parent>
 	<artifactId>java-fire-distribution-api</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>java-fire</groupId>
+			<artifactId>java-fire-common</artifactId>
+		</dependency>
+	</dependencies>
 </project>
