@@ -1,5 +1,7 @@
 package javafire.eventing.core;
 
+import javafire.api.Event;
+
 /**
  * A representation for types that can handle events.
  * 

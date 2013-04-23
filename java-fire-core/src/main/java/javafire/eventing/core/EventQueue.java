@@ -1,5 +1,7 @@
 package javafire.eventing.core;
 
+import javafire.api.Event;
+
 /**
  * A queue where events are kept until ready to be processed. It guarantees no
  * duplicate events can ever exist in it. More precisely, if an event
