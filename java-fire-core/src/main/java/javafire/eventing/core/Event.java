@@ -9,7 +9,7 @@ package javafire.eventing.core;
  * 
  * @author Emerson Loureiro
  */
-interface Event {
+public interface Event {
 
 	/**
 	 * Returns the key of this event.
