@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 
 import javafire.annotations.Event.DuplicateResolution;
 import javafire.annotations.Event.EventType;
-import javafire.api.Event;
 import javafire.eventing.utils.EventingUtils;
 
 import org.apache.commons.lang.UnhandledException;

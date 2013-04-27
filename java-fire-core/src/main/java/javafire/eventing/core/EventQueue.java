@@ -1,6 +1,5 @@
 package javafire.eventing.core;
 
-import javafire.api.Event;
 
 /**
  * A queue where events are kept until ready to be processed. It guarantees no

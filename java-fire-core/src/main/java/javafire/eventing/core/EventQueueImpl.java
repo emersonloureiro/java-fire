@@ -3,7 +3,6 @@ package javafire.eventing.core;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javafire.api.Event;
 
 class EventQueueImpl implements EventQueue {
 

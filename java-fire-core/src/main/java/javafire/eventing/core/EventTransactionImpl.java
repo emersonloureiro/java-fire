@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import javafire.api.Event;
 
 /**
  * Default implementation of an event transaction.

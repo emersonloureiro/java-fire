@@ -1,6 +1,5 @@
 package javafire.eventing.core;
 
-import javafire.api.Event;
 
 /**
  * This interface extends the exposed {@link EventTransaction} one to provide

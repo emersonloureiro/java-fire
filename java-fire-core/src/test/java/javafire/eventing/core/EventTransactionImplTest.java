@@ -122,8 +122,8 @@ public class EventTransactionImplTest extends TestCase {
 	public void testEventFired_DuplicateResolution() throws Exception {
 		// Check when the duplicate resolution of the
 		// event is "first wins"
-		javafire.api.Event event1 = new EventImpl(new SampleEvent("1"));
-		javafire.api.Event event2 = new EventImpl(new SampleEvent("1"));
+		javafire.eventing.core.Event event1 = new EventImpl(new SampleEvent("1"));
+		javafire.eventing.core.Event event2 = new EventImpl(new SampleEvent("1"));
 		this.transaction.eventFired(event1);
 		this.transaction.eventFired(event2);
 		assertEquals(1, this.transaction.getAsynchronousEventQueue().size());

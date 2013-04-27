@@ -2,7 +2,6 @@ package javafire.eventing.core;
 
 import java.lang.reflect.Method;
 
-import javafire.api.Event;
 import javafire.eventing.utils.ReflectionUtils;
 
 /**
