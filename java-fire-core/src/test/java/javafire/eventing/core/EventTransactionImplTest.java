@@ -141,6 +141,7 @@ public class EventTransactionImplTest extends TestCase {
 	}
 
 	@Event(duplicateResolution = DuplicateResolution.LAST_WINS)
+	@SuppressWarnings("unused")
 	private class SampleLastWinDuplicateResolutionEvent {
 
 		@EventKey

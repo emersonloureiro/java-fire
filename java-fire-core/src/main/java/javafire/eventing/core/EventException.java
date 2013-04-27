@@ -6,6 +6,7 @@ package javafire.eventing.core;
  * 
  * @author Emerson Loureiro
  */
+@SuppressWarnings("serial")
 public class EventException extends Exception {
 
 	public EventException(Exception cause) {

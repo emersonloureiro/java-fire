@@ -4,14 +4,10 @@
 	<parent>
 		<groupId>java-fire</groupId>
 		<artifactId>java-fire-root</artifactId>
-		<version>${java-fire-version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>java-fire-core</artifactId>
 	<dependencies>
-		<dependency>
-			<groupId>java-fire</groupId>
-			<artifactId>java-fire-common</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

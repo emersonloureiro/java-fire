@@ -52,6 +52,7 @@ public class HandlerImplTest extends TestCase {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private class SampleHandlerWithException {
 		@Handle
 		public void handleEventWithException(SampleEvent event) {

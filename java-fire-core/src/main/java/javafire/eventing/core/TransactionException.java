@@ -5,6 +5,7 @@ package javafire.eventing.core;
  * 
  * @author Emerson Loureiro
  */
+@SuppressWarnings("serial")
 public class TransactionException extends Exception {
 
 	private final String transactionId;
