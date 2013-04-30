@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import javafire.distribution.core.EventStoreException;
 
 /**
  * Default implementation of an event transaction.
@@ -114,7 +115,7 @@ class EventTransactionImpl implements InternalEventTransaction {
 		return this.status != TransactionStatus.COMMITTED && this.status != TransactionStatus.ROLLED_BACK;
 	}
 
-	private void dispatchAsynchronousEvents() throws EventException {
+	private void dispatchAsynchronousEvents() throws EventException, EventStoreException {
 		if (!this.asynchronousEventQueue.isEmpty()) {
 			DistributedDispatcher.dispatch(this.asynchronousEventQueue);
 			this.asynchronousEventQueue.clear();
