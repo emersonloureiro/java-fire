@@ -6,5 +6,9 @@ package javafire.distribution.core;
  * @author Emerson Loureiro
  */
 @SuppressWarnings("serial")
-public class EventStoreException extends Exception {
+public class EventStoreException extends RuntimeException {
+
+	public EventStoreException(Exception cause) {
+		super(cause);
+	}
 }

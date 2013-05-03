@@ -7,7 +7,7 @@ package javafire.eventing.core;
  * @author Emerson Loureiro
  */
 @SuppressWarnings("serial")
-public class EventException extends Exception {
+public class EventException extends RuntimeException {
 
 	public EventException(Exception cause) {
 		super(cause);
