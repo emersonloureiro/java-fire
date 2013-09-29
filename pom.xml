@@ -3,24 +3,38 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>java-fire</groupId>
 	<artifactId>java-fire-root</artifactId>
-	<properties>
-	</properties>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>java-fire-core</module>
 	</modules>
+	<properties>
+		<mockito-version>1.9.5</mockito-version>
+		<commons-lang-version>2.6</commons-lang-version>
+		<junit-version>4.11</junit-version>
+		<commons-collections-version>3.0</commons-collections-version>
+	</properties>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.11</version>
+				<version>${junit-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
-				<version>1.9.5</version>
+				<version>${mockito-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections-version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
