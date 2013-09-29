@@ -1,8 +1,5 @@
 package javafire.eventing.core;
 
-import java.util.Map;
-
-import javafire.annotations.EventProperty;
 
 /**
  * Representation of an event, which wraps the actual event object, providing
@@ -52,14 +49,4 @@ public interface Event {
 	 * @return Object
 	 */
 	Object getWrappedEvent();
-
-	/**
-	 * Returns a map of all the properties of the event wrapped by this type.
-	 * More precisely, returns the values of all methods, on the wrapped event,
-	 * which are annotated with the {@link EventProperty} annotation. For an
-	 * event with no property, an empty map is returned instead.
-	 * 
-	 * @return {@link Map}
-	 */
-	Map<String, Object> getProperties();
 }
