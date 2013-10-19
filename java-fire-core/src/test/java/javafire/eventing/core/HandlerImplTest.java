@@ -28,7 +28,8 @@ public class HandlerImplTest extends TestCase {
 		// Check when an exception is thrown when handling
 		// the event
 		SampleHandlerWithException handlerWithException = new SampleHandlerWithException();
-		this.handlerWrapper = new HandlerImpl(handlerWithException, EventingUtils.getHandlerMethods(handlerWithException.getClass()).get(0));
+		this.handlerWrapper = new HandlerImpl(handlerWithException, EventingUtils.getHandlerMethods(
+				handlerWithException.getClass()).get(0));
 		try {
 			this.handlerWrapper.handle(new EventImpl(new SampleEvent()));
 			fail("EventException was expected");
@@ -37,14 +38,16 @@ public class HandlerImplTest extends TestCase {
 	}
 
 	public void testHandle_ClassProvided() throws Exception {
-		this.handlerWrapper = new HandlerImpl(SampleClassBasedSingleEventListener.class, EventingUtils.getHandlerMethods(SampleClassBasedSingleEventListener.class).get(0));
+		this.handlerWrapper = new HandlerImpl(SampleClassBasedSingleEventListener.class, EventingUtils.getHandlerMethods(
+				SampleClassBasedSingleEventListener.class).get(0));
 		// Mimic the handler processing two events
 		this.handlerWrapper.handle(new EventImpl(new SampleEvent()));
 		this.handlerWrapper.handle(new EventImpl(new SampleEvent()));
 		assertEquals(2, SampleClassBasedSingleEventListener.sampleEventsHandled);
 		// Check when an exception is thrown when handling
 		// the event
-		this.handlerWrapper = new HandlerImpl(SampleHandlerWithException.class, EventingUtils.getHandlerMethods(SampleHandlerWithException.class).get(0));
+		this.handlerWrapper = new HandlerImpl(SampleHandlerWithException.class, EventingUtils.getHandlerMethods(
+				SampleHandlerWithException.class).get(0));
 		try {
 			this.handlerWrapper.handle(new EventImpl(new SampleEvent()));
 			fail("EventException was expected");
@@ -52,7 +55,6 @@ public class HandlerImplTest extends TestCase {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private class SampleHandlerWithException {
 		@Handle
 		public void handleEventWithException(SampleEvent event) {

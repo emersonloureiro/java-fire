@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Denotes the annotated class as an event type. A parameter can be provided to
- * mark the event type as synchronous {@link EventType#SYNCHRONOUS} or
- * asynchronous {@link EventType#ASYNCHRONOUS}, which is the default so it
- * doesn't need to be provided.
+ * Denotes the annotated class as an event type. An event type exists -
+ * currently only supporting {@link EventType#SYNCHRONOUS} - which is the
+ * default so it doesn't need to be provided. Duplication resolution can be
+ * determined with {@link DuplicateResolution}.
  * 
  * @author Emerson Loureiro
  */
@@ -18,18 +18,14 @@ import java.lang.annotation.Target;
 public @interface Event {
 
 	public enum EventType {
-		ASYNCHRONOUS, SYNCHRONOUS
+		SYNCHRONOUS
 	}
-
-	;
 
 	public enum DuplicateResolution {
 		FIRST_WINS, LAST_WINS
 	}
 
-	;
-
-	EventType type() default EventType.ASYNCHRONOUS;
+	EventType type() default EventType.SYNCHRONOUS;
 
 	DuplicateResolution duplicateResolution() default DuplicateResolution.FIRST_WINS;
 }

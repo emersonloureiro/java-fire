@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import javafire.distribution.core.EventStoreException;
-
 /**
  * Default implementation of an event transaction.
  * 
@@ -32,13 +30,11 @@ class EventTransactionImpl implements InternalEventTransaction {
 	 * transaction is committed and the events then processed.
 	 */
 	private final EventQueue synchronousEventQueue;
-	private final EventQueue asynchronousEventQueue;
 
 	public EventTransactionImpl() {
 		this.id = UUID.randomUUID().toString();
 		this.firedEventIds = new LinkedHashSet<String>();
 		this.synchronousEventQueue = new EventQueueImpl();
-		this.asynchronousEventQueue = new EventQueueImpl();
 		this.status = TransactionStatus.STARTED;
 	}
 
@@ -49,7 +45,6 @@ class EventTransactionImpl implements InternalEventTransaction {
 		}
 		try {
 			processSynchronousEvents();
-			dispatchAsynchronousEvents();
 			this.status = TransactionStatus.COMMITTED;
 			EventBus.transactionCommitted(this);
 		} catch (EventException e) {
@@ -64,7 +59,6 @@ class EventTransactionImpl implements InternalEventTransaction {
 	@Override
 	public void rollback() throws TransactionException {
 		this.synchronousEventQueue.clear();
-		this.asynchronousEventQueue.clear();
 		this.status = TransactionStatus.ROLLED_BACK;
 		EventBus.transactionRolledback(this);
 	}
@@ -83,8 +77,6 @@ class EventTransactionImpl implements InternalEventTransaction {
 			this.firedEventIds.add(event.getId());
 			if (event.isSynchronous()) {
 				this.synchronousEventQueue.add(event);
-			} else {
-				this.asynchronousEventQueue.add(event);
 			}
 		}
 	}
@@ -107,19 +99,8 @@ class EventTransactionImpl implements InternalEventTransaction {
 		return this.synchronousEventQueue;
 	}
 
-	EventQueue getAsynchronousEventQueue() {
-		return this.asynchronousEventQueue;
-	}
-
 	private boolean isActive() {
 		return this.status != TransactionStatus.COMMITTED && this.status != TransactionStatus.ROLLED_BACK;
-	}
-
-	private void dispatchAsynchronousEvents() throws EventException, EventStoreException {
-		if (!this.asynchronousEventQueue.isEmpty()) {
-			DistributedDispatcher.dispatch(this.asynchronousEventQueue);
-			this.asynchronousEventQueue.clear();
-		}
 	}
 
 	private void processSynchronousEvents() throws EventException {

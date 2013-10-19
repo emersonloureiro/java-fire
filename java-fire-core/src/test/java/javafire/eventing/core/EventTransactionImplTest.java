@@ -1,31 +1,23 @@
 package javafire.eventing.core;
 
-import java.util.List;
-
 import javafire.annotations.Event;
 import javafire.annotations.Event.DuplicateResolution;
 import javafire.annotations.EventKey;
-import javafire.distribution.core.EventStore;
 import javafire.tests.SampleEvent;
 import javafire.tests.SampleSynchronousEvent;
 import junit.framework.TestCase;
 
-import org.mockito.Mockito;
-
 public class EventTransactionImplTest extends TestCase {
 
 	private EventTransactionImpl transaction;
-	private EventStore originalEventStore;
 
 	@Override
 	public void setUp() {
 		this.transaction = new EventTransactionImpl();
-		this.originalEventStore = DistributedDispatcher.getEventStore();
 	}
 
 	@Override
 	public void tearDown() {
-		DistributedDispatcher.setEventStore(this.originalEventStore);
 	}
 
 	/**
@@ -41,9 +33,7 @@ public class EventTransactionImplTest extends TestCase {
 		// the count
 		assertEquals(4, this.transaction.getFiredEventIds().size());
 		// Check the synchronous event queue
-		assertEquals(2, this.transaction.getSynchronousEventQueue().size());
-		// Check the asynchronous event queue
-		assertEquals(2, this.transaction.getAsynchronousEventQueue().size());
+		assertEquals(4, this.transaction.getSynchronousEventQueue().size());
 	}
 
 	public void testRollback() throws Exception {
@@ -58,7 +48,6 @@ public class EventTransactionImplTest extends TestCase {
 		assertEquals(4, this.transaction.getFiredEventIds().size());
 		// Both event queues are cleared up
 		assertEquals(0, this.transaction.getSynchronousEventQueue().size());
-		assertEquals(0, this.transaction.getAsynchronousEventQueue().size());
 
 		try {
 			// Attempting to fire more events to the transaction
@@ -72,7 +61,6 @@ public class EventTransactionImplTest extends TestCase {
 		// rolled back
 		assertEquals(4, this.transaction.getFiredEventIds().size());
 		assertEquals(0, this.transaction.getSynchronousEventQueue().size());
-		assertEquals(0, this.transaction.getAsynchronousEventQueue().size());
 
 		try {
 			this.transaction.commit();
@@ -83,13 +71,9 @@ public class EventTransactionImplTest extends TestCase {
 		// rolled back
 		assertEquals(4, this.transaction.getFiredEventIds().size());
 		assertEquals(0, this.transaction.getSynchronousEventQueue().size());
-		assertEquals(0, this.transaction.getAsynchronousEventQueue().size());
 	}
 
 	public void testCommit() throws Exception {
-		EventStore eventStore = Mockito.mock(EventStore.class);
-		DistributedDispatcher.setEventStore(eventStore);
-
 		// Fire some events and commit the transaction
 		this.transaction.eventFired(new EventImpl(new SampleEvent("1")));
 		this.transaction.eventFired(new EventImpl(new SampleEvent("2")));
@@ -101,7 +85,6 @@ public class EventTransactionImplTest extends TestCase {
 		assertEquals(4, this.transaction.getFiredEventIds().size());
 		// Both event queues are cleared up
 		assertEquals(0, this.transaction.getSynchronousEventQueue().size());
-		assertEquals(0, this.transaction.getAsynchronousEventQueue().size());
 
 		try {
 			// Attempting to fire more events to the transaction
@@ -115,7 +98,6 @@ public class EventTransactionImplTest extends TestCase {
 		// rolled back
 		assertEquals(4, this.transaction.getFiredEventIds().size());
 		assertEquals(0, this.transaction.getSynchronousEventQueue().size());
-		assertEquals(0, this.transaction.getAsynchronousEventQueue().size());
 
 		try {
 			// It's wrong to commit a transaction again!
@@ -127,9 +109,6 @@ public class EventTransactionImplTest extends TestCase {
 		// rolled back
 		assertEquals(4, this.transaction.getFiredEventIds().size());
 		assertEquals(0, this.transaction.getSynchronousEventQueue().size());
-		assertEquals(0, this.transaction.getAsynchronousEventQueue().size());
-		// Ensure events have been put into the store
-		Mockito.verify(eventStore, Mockito.times(1)).put(Mockito.isA(List.class));
 	}
 
 	/**
@@ -143,8 +122,6 @@ public class EventTransactionImplTest extends TestCase {
 		javafire.eventing.core.Event event2 = new EventImpl(new SampleEvent("1"));
 		this.transaction.eventFired(event1);
 		this.transaction.eventFired(event2);
-		assertEquals(1, this.transaction.getAsynchronousEventQueue().size());
-		assertSame(event1, this.transaction.getAsynchronousEventQueue().peek());
 		// Reset the transaction
 		this.transaction = new EventTransactionImpl();
 		// Check when the duplicate resolution of the
@@ -153,12 +130,9 @@ public class EventTransactionImplTest extends TestCase {
 		event2 = new EventImpl(new SampleLastWinDuplicateResolutionEvent());
 		this.transaction.eventFired(event1);
 		this.transaction.eventFired(event2);
-		assertEquals(1, this.transaction.getAsynchronousEventQueue().size());
-		assertSame(event2, this.transaction.getAsynchronousEventQueue().peek());
 	}
 
 	@Event(duplicateResolution = DuplicateResolution.LAST_WINS)
-	@SuppressWarnings("unused")
 	private class SampleLastWinDuplicateResolutionEvent {
 
 		@EventKey

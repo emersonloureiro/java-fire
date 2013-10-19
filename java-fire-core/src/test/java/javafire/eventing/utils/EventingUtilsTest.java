@@ -13,7 +13,7 @@ public class EventingUtilsTest extends TestCase {
 	public void testGetEventAnnotation() {
 		// Checking the default case
 		Event eventAnnotation = EventingUtils.getEventAnnotation(SampleEventWithDefaultValues.class);
-		assertEquals(eventAnnotation.type(), EventType.ASYNCHRONOUS);
+		assertEquals(eventAnnotation.type(), EventType.SYNCHRONOUS);
 		assertEquals(eventAnnotation.duplicateResolution(), DuplicateResolution.FIRST_WINS);
 		// Checking when parameters are defined in the
 		// annotations
