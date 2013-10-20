@@ -1,6 +1,5 @@
 package javafire.eventing.core;
 
-
 /**
  * Representation of an event, which wraps the actual event object, providing
  * easy access methods for its properties. The contract of this interface is
