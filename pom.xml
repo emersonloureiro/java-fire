@@ -5,6 +5,20 @@
 	<artifactId>java-fire-root</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>java-fire</name>
+	<description>Java-based transactional event processing framework</description>
+	<url>https://code.google.com/p/java-fire</url>
+	<developers>
+		<developer>
+			<id>emersonloureiro</id>
+			<name>Emerson Loureiro</name>
+			<email>emerson.loureiro@gmail.com</email>
+		</developer>
+	</developers>
+	<scm>
+		<url>http://java-fire.googlecode.com/svn/trunk</url>
+		<connection>http://java-fire.googlecode.com/svn/trunk</connection>
+	</scm>
 	<modules>
 		<module>java-fire-core</module>
 	</modules>
@@ -20,11 +34,13 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit-version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
 				<version>${mockito-version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>commons-lang</groupId>
