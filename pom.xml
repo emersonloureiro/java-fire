@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>java-fire</groupId>
 	<artifactId>java-fire-root</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<name>java-fire</name>
 	<description>Java-based transactional event processing framework</description>
@@ -16,9 +15,9 @@
 		</developer>
 	</developers>
 	<scm>
-		<url>http://java-fire.googlecode.com/svn/trunk</url>
-		<connection>http://java-fire.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:svn:http://java-fire.googlecode.com/svn/trunk</developerConnection>
+		<url>http://java-fire.googlecode.com/svn/tags/java-fire-root-1.0.0</url>
+		<connection>http://java-fire.googlecode.com/svn/tags/java-fire-root-1.0.0</connection>
+		<developerConnection>scm:svn:http://java-fire.googlecode.com/svn/tags/java-fire-root-1.0.0</developerConnection>
 	</scm>
 	<modules>
 		<module>java-fire-core</module>
