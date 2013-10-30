@@ -18,6 +18,7 @@
 	<scm>
 		<url>http://java-fire.googlecode.com/svn/trunk</url>
 		<connection>http://java-fire.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:http://java-fire.googlecode.com/svn/trunk</developerConnection>
 	</scm>
 	<modules>
 		<module>java-fire-core</module>
