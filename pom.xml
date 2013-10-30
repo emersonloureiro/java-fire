@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>java-fire</groupId>
 	<artifactId>java-fire-root</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>java-fire</name>
 	<description>Java-based transactional event processing framework</description>
@@ -15,9 +15,9 @@
 		</developer>
 	</developers>
 	<scm>
-		<url>http://java-fire.googlecode.com/svn/tags/java-fire-root-1.0.0</url>
-		<connection>http://java-fire.googlecode.com/svn/tags/java-fire-root-1.0.0</connection>
-		<developerConnection>scm:svn:http://java-fire.googlecode.com/svn/tags/java-fire-root-1.0.0</developerConnection>
+		<url>http://java-fire.googlecode.com/svn/trunk</url>
+		<connection>http://java-fire.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:http://java-fire.googlecode.com/svn/trunk</developerConnection>
 	</scm>
 	<modules>
 		<module>java-fire-core</module>
