@@ -1,11 +1,11 @@
-## java-fire
+### Overview
 
 Java Fire is a event framework and platform, providing:
 
 * Publish-subscribe: publish (fire) events and have them delivered and processed by registered listeners;
 * Transactionality: events are fired only within a transaction, and aren't delivered by listeners until the transaction is committed.
 
-## Generating Binaries
+### Generating Binaries
 
 The minimum requirements are:
 
