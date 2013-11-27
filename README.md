@@ -7,6 +7,8 @@ Java Fire is a event framework and platform, providing:
 
 More information can be found at http://emersonloureiro.github.io/java-fire.
 
+Latest stable release is 1.0.0-rc1. You can download it [here](https://github.com/emersonloureiro/java-fire/releases/download/v1.0.0-rc1/java-fire-core-1.0.0-rc1.jar).
+
 #### Generating Binaries
 
 The minimum requirements are:
