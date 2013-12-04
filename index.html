@@ -4,40 +4,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Java-fire by emersonloureiro</title>
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-
+    <div class="wrapper">
       <header>
         <h1>Java-fire</h1>
         <p>Transactional Java-based Event Processing Framework</p>
+
+        <p class="view"><a href="https://github.com/emersonloureiro/java-fire">View the Project on GitHub <small>emersonloureiro/java-fire</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/emersonloureiro/java-fire/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/emersonloureiro/java-fire/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/emersonloureiro/java-fire">View On <strong>GitHub</strong></a></li>
+        </ul>
       </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/emersonloureiro/java-fire" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/emersonloureiro/java-fire/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/emersonloureiro/java-fire/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
       <section>
         <h2>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
@@ -47,7 +36,7 @@
 <ul>
 <li>Publish-subscribe: publish (fire) events and have them delivered and processed by registered listeners;</li>
 <li>Transactionality: events are fired only within a transaction, and aren't delivered by listeners until the transaction is committed.</li>
-</ul><p>Latest stable release is 1.0.0-rc1. You can download it <a href="https://github.com/emersonloureiro/java-fire/releases/download/v1.0.0-rc1/java-fire-core-1.0.0-rc1.jar">here</a>.</p>
+</ul><p><strong>Latest stable release is 1.0.0-rc1. You can download it <a href="https://github.com/emersonloureiro/java-fire/releases/download/v1.0.0-rc1/java-fire-core-1.0.0-rc1.jar">here</a>.</strong></p>
 
 <h2>
 <a name="first-things-first" class="anchor" href="#first-things-first"><span class="octicon octicon-link"></span></a>First Things First</h2>
@@ -204,7 +193,9 @@ try {
 </code></pre>
 
 <h2>
-<a name="generating-binaries" class="anchor" href="#generating-binaries"><span class="octicon octicon-link"></span></a>Generating Binaries</h2>
+<a name="binaries" class="anchor" href="#binaries"><span class="octicon octicon-link"></span></a>Binaries</h2>
+
+<p>You can download the binaries from <a href="https://github.com/emersonloureiro/java-fire/releases">here</a>. The latest stable release is 1.0.0-rc1 (release candidate 1), available directly <a href="https://github.com/emersonloureiro/java-fire/releases/download/v1.0.0-rc1/java-fire-core-1.0.0-rc1.jar">here</a>.</p>
 
 <p>The minimum requirements are:</p>
 
@@ -214,11 +205,11 @@ try {
 </ul><p>Once you've checked out the source code, open a command line prompt and run a <code>mvn clean install</code>. This should get you the binaries and source on you local repository. A <code>mvn deploy</code> should let you deploy to your remote repository.</p>
       </section>
       <footer>
-        <p>Project maintained by <a href="https://github.com/emersonloureiro">emersonloureiro</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        <p>This project is maintained by <a href="https://github.com/emersonloureiro">emersonloureiro</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     
   </body>
 </html>
