@@ -1,3 +1,6 @@
 .idea*
 *.iml
 /java-fire-core/target/**
+.classpath
+.settings/
+.project

@@ -2,11 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>java-fire</groupId>
 	<artifactId>java-fire-root</artifactId>
-	<version>1.0.0-rc1</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<name>java-fire</name>
 	<description>Java-based transactional event processing framework</description>
-	<url>https://code.google.com/p/java-fire</url>
+	<url>http://emersonloureiro.github.io/java-fire/</url>
 	<developers>
 		<developer>
 			<id>emersonloureiro</id>

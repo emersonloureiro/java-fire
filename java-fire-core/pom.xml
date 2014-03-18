@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>java-fire</groupId>
 		<artifactId>java-fire-root</artifactId>
-		<version>1.0.0-rc1</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>java-fire-core</artifactId>
 	<dependencies>
