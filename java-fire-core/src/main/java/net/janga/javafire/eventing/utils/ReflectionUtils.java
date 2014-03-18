@@ -1,4 +1,4 @@
-package javafire.eventing.utils;
+package net.janga.javafire.eventing.utils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

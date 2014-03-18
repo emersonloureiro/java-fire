@@ -1,10 +1,11 @@
 package javafire.eventing.utils;
 
-import javafire.annotations.Event;
-import javafire.annotations.Event.DuplicateResolution;
-import javafire.annotations.Event.EventType;
-import javafire.annotations.EventKey;
-import javafire.annotations.Handle;
+import net.janga.javafire.annotations.Event;
+import net.janga.javafire.annotations.EventKey;
+import net.janga.javafire.annotations.Handle;
+import net.janga.javafire.annotations.Event.DuplicateResolution;
+import net.janga.javafire.annotations.Event.EventType;
+import net.janga.javafire.eventing.utils.EventingUtils;
 import junit.framework.TestCase;
 
 @SuppressWarnings("unused")

@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 /**
  * Class of exceptions related to events (e.g., firing events and registering

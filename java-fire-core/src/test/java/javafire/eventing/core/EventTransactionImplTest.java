@@ -1,8 +1,11 @@
 package javafire.eventing.core;
 
-import javafire.annotations.Event;
-import javafire.annotations.Event.DuplicateResolution;
-import javafire.annotations.EventKey;
+import net.janga.javafire.annotations.Event;
+import net.janga.javafire.annotations.EventKey;
+import net.janga.javafire.annotations.Event.DuplicateResolution;
+import net.janga.javafire.eventing.core.EventImpl;
+import net.janga.javafire.eventing.core.EventTransactionImpl;
+import net.janga.javafire.eventing.core.TransactionException;
 import javafire.tests.SampleEvent;
 import javafire.tests.SampleSynchronousEvent;
 import junit.framework.TestCase;
@@ -118,8 +121,8 @@ public class EventTransactionImplTest extends TestCase {
 	public void testEventFired_DuplicateResolution() throws Exception {
 		// Check when the duplicate resolution of the
 		// event is "first wins"
-		javafire.eventing.core.Event event1 = new EventImpl(new SampleEvent("1"));
-		javafire.eventing.core.Event event2 = new EventImpl(new SampleEvent("1"));
+		net.janga.javafire.eventing.core.Event event1 = new EventImpl(new SampleEvent("1"));
+		net.janga.javafire.eventing.core.Event event2 = new EventImpl(new SampleEvent("1"));
 		this.transaction.eventFired(event1);
 		this.transaction.eventFired(event2);
 		// Reset the transaction

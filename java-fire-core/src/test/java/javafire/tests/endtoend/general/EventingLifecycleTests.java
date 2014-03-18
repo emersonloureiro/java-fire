@@ -1,8 +1,8 @@
 package javafire.tests.endtoend.general;
 
+import net.janga.javafire.eventing.core.EventBus;
+import net.janga.javafire.eventing.core.EventTransaction;
 import javafire.eventing.core.BaseEventingTest;
-import javafire.eventing.core.EventBus;
-import javafire.eventing.core.EventTransaction;
 import javafire.tests.SampleClassBasedMultipleEventsListener;
 import javafire.tests.SampleSynchronousEvent;
 

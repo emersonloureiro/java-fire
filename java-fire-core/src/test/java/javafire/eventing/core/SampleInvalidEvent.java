@@ -1,6 +1,6 @@
 package javafire.eventing.core;
 
-import javafire.annotations.Event;
+import net.janga.javafire.annotations.Event;
 
 @Event
 public class SampleInvalidEvent {

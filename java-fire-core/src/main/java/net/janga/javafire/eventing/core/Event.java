@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 /**
  * Representation of an event, which wraps the actual event object, providing

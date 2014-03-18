@@ -1,6 +1,6 @@
 package javafire.tests;
 
-import javafire.annotations.Handle;
+import net.janga.javafire.annotations.Handle;
 
 public class SampleClassBasedSingleEventListener {
 

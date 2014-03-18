@@ -1,6 +1,6 @@
 package javafire.eventing.core;
 
-import javafire.eventing.core.EventBus;
+import net.janga.javafire.eventing.core.EventBus;
 import junit.framework.TestCase;
 
 public abstract class BaseEventingTest extends TestCase {

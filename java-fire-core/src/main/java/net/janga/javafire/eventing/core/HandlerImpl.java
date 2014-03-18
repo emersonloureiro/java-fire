@@ -1,8 +1,8 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import java.lang.reflect.Method;
 
-import javafire.eventing.utils.ReflectionUtils;
+import net.janga.javafire.eventing.utils.ReflectionUtils;
 
 /**
  * Default implementation of {@link Handler}. Made package-private as it's only

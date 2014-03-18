@@ -1,7 +1,7 @@
 package javafire.tests;
 
-import javafire.annotations.Event;
-import javafire.annotations.EventKey;
+import net.janga.javafire.annotations.Event;
+import net.janga.javafire.annotations.EventKey;
 
 @Event
 public class SampleEvent {

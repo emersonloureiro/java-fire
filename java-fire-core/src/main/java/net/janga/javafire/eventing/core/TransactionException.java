@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 /**
  * Class of exception thrown by an {@link EventTransaction}.

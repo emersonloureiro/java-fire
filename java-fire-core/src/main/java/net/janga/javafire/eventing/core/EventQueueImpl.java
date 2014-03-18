@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

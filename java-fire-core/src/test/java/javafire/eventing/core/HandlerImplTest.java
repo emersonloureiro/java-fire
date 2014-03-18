@@ -1,7 +1,10 @@
 package javafire.eventing.core;
 
-import javafire.annotations.Handle;
-import javafire.eventing.utils.EventingUtils;
+import net.janga.javafire.annotations.Handle;
+import net.janga.javafire.eventing.core.EventException;
+import net.janga.javafire.eventing.core.EventImpl;
+import net.janga.javafire.eventing.core.HandlerImpl;
+import net.janga.javafire.eventing.utils.EventingUtils;
 import javafire.tests.SampleClassBasedSingleEventListener;
 import javafire.tests.SampleEvent;
 import javafire.tests.SampleInstanceBasedEventListener;

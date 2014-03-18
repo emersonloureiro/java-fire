@@ -1,4 +1,4 @@
-package javafire.annotations;
+package net.janga.javafire.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

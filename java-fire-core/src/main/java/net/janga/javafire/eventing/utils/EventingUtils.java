@@ -1,12 +1,12 @@
-package javafire.eventing.utils;
+package net.janga.javafire.eventing.utils;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafire.annotations.Event;
-import javafire.annotations.EventKey;
-import javafire.annotations.Handle;
+import net.janga.javafire.annotations.Event;
+import net.janga.javafire.annotations.EventKey;
+import net.janga.javafire.annotations.Handle;
 
 public class EventingUtils {
 

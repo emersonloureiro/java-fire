@@ -1,8 +1,8 @@
 package javafire.tests.endtoend.general;
 
-import javafire.annotations.Event;
-import javafire.annotations.Event.EventType;
-import javafire.annotations.EventKey;
+import net.janga.javafire.annotations.Event;
+import net.janga.javafire.annotations.EventKey;
+import net.janga.javafire.annotations.Event.EventType;
 import javafire.tests.SampleEvent;
 
 @Event(type = EventType.SYNCHRONOUS)

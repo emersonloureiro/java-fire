@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javafire.eventing.utils.EventingUtils;
+import net.janga.javafire.eventing.utils.EventingUtils;
 
 /**
  * The event bus in <code>Fire</code>. It's a central class where event firing

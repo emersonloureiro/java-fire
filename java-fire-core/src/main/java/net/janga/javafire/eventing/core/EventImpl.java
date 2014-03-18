@@ -1,10 +1,10 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import java.lang.reflect.Method;
 
-import javafire.annotations.Event.DuplicateResolution;
-import javafire.annotations.Event.EventType;
-import javafire.eventing.utils.EventingUtils;
+import net.janga.javafire.annotations.Event.DuplicateResolution;
+import net.janga.javafire.annotations.Event.EventType;
+import net.janga.javafire.eventing.utils.EventingUtils;
 
 import org.apache.commons.lang.UnhandledException;
 
