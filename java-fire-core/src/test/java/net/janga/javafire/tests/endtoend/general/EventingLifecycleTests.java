@@ -1,10 +1,10 @@
-package javafire.tests.endtoend.general;
+package net.janga.javafire.tests.endtoend.general;
 
+import net.janga.javafire.eventing.core.BaseEventingTest;
 import net.janga.javafire.eventing.core.EventBus;
 import net.janga.javafire.eventing.core.EventTransaction;
-import javafire.eventing.core.BaseEventingTest;
-import javafire.tests.SampleClassBasedMultipleEventsListener;
-import javafire.tests.SampleSynchronousEvent;
+import net.janga.javafire.tests.SampleClassBasedMultipleEventsListener;
+import net.janga.javafire.tests.SampleSynchronousEvent;
 
 /**
  * This covers tests related to all eventing life cycles (e.g., start

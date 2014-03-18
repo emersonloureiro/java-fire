@@ -1,13 +1,13 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import net.janga.javafire.annotations.Handle;
 import net.janga.javafire.eventing.core.EventException;
 import net.janga.javafire.eventing.core.EventImpl;
 import net.janga.javafire.eventing.core.HandlerImpl;
 import net.janga.javafire.eventing.utils.EventingUtils;
-import javafire.tests.SampleClassBasedSingleEventListener;
-import javafire.tests.SampleEvent;
-import javafire.tests.SampleInstanceBasedEventListener;
+import net.janga.javafire.tests.SampleClassBasedSingleEventListener;
+import net.janga.javafire.tests.SampleEvent;
+import net.janga.javafire.tests.SampleInstanceBasedEventListener;
 import junit.framework.TestCase;
 
 public class HandlerImplTest extends TestCase {

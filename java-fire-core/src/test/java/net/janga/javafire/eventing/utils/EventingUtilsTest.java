@@ -1,4 +1,4 @@
-package javafire.eventing.utils;
+package net.janga.javafire.eventing.utils;
 
 import net.janga.javafire.annotations.Event;
 import net.janga.javafire.annotations.EventKey;

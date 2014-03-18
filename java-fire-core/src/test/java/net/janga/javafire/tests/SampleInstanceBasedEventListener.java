@@ -1,4 +1,4 @@
-package javafire.tests;
+package net.janga.javafire.tests;
 
 import net.janga.javafire.annotations.Handle;
 

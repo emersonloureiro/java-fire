@@ -1,9 +1,9 @@
-package javafire.tests.endtoend.general;
+package net.janga.javafire.tests.endtoend.general;
 
 import net.janga.javafire.annotations.Handle;
 import net.janga.javafire.eventing.core.EventBus;
 import net.janga.javafire.eventing.core.EventException;
-import javafire.tests.SampleSynchronousEvent;
+import net.janga.javafire.tests.SampleSynchronousEvent;
 
 public class EventFiringListener {
 

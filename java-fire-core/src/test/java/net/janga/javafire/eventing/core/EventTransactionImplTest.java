@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import net.janga.javafire.annotations.Event;
 import net.janga.javafire.annotations.EventKey;
@@ -6,8 +6,8 @@ import net.janga.javafire.annotations.Event.DuplicateResolution;
 import net.janga.javafire.eventing.core.EventImpl;
 import net.janga.javafire.eventing.core.EventTransactionImpl;
 import net.janga.javafire.eventing.core.TransactionException;
-import javafire.tests.SampleEvent;
-import javafire.tests.SampleSynchronousEvent;
+import net.janga.javafire.tests.SampleEvent;
+import net.janga.javafire.tests.SampleSynchronousEvent;
 import junit.framework.TestCase;
 
 public class EventTransactionImplTest extends TestCase {

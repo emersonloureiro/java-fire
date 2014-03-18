@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import net.janga.javafire.eventing.core.EventBus;
 import junit.framework.TestCase;

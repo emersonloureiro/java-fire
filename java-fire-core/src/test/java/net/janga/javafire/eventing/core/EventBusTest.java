@@ -1,4 +1,4 @@
-package javafire.eventing.core;
+package net.janga.javafire.eventing.core;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import net.janga.javafire.eventing.core.EventException;
 import net.janga.javafire.eventing.core.EventImpl;
 import net.janga.javafire.eventing.core.EventTransaction;
 import net.janga.javafire.eventing.core.Handler;
-import javafire.tests.SampleEvent;
-import javafire.tests.SampleClassBasedSingleEventListener;
+import net.janga.javafire.tests.SampleClassBasedSingleEventListener;
+import net.janga.javafire.tests.SampleEvent;
 
 public class EventBusTest extends BaseEventingTest {
 

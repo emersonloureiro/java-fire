@@ -1,4 +1,4 @@
-package javafire.tests.endtoend.general;
+package net.janga.javafire.tests.endtoend.general;
 
 import net.janga.javafire.annotations.Handle;
 

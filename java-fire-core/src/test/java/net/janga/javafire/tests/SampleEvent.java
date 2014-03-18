@@ -1,15 +1,18 @@
-package javafire.tests;
+package net.janga.javafire.tests;
 
 import net.janga.javafire.annotations.Event;
 import net.janga.javafire.annotations.EventKey;
-import net.janga.javafire.annotations.Event.EventType;
 
-@Event(type = EventType.SYNCHRONOUS)
-public class SampleSynchronousEvent {
+@Event
+public class SampleEvent {
 
 	private final String key;
 
-	public SampleSynchronousEvent(String key) {
+	public SampleEvent() {
+		this(null);
+	}
+
+	public SampleEvent(String key) {
 		this.key = key;
 	}
 
