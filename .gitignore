@@ -1,1 +1,3 @@
+.idea*
+*.iml
 /java-fire-core/target/**
