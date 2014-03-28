@@ -7,4 +7,4 @@ Java Fire is a event framework and platform, providing:
 
 More information can be found at http://jangasoft.github.io/java-fire.
 
-Latest stable release is 1.0.0. You can download it [here](https://github.com/jangasoft/java-fire/releases/download/v1.0.1/java-fire-core-1.0.1.jar).
+Latest stable release is 1.0.1. You can download it [here](https://github.com/jangasoft/java-fire/releases/download/v1.0.1/java-fire-core-1.0.1.jar).
