@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>cf.janga</groupId>
 		<artifactId>java-fire-root</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
+		<version>1.0.2</version>
 	</parent>
 	<artifactId>java-fire-core</artifactId>
 	<dependencies>
