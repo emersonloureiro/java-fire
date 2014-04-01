@@ -1,12 +1,25 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 	<groupId>cf.janga</groupId>
 	<artifactId>java-fire-root</artifactId>
 	<version>1.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>java-fire</name>
 	<description>Java-based transactional event processing framework</description>
-	<url>http://emersonloureiro.github.io/java-fire/</url>
+	<url>http://jangasoft.github.io/java-fire/</url>
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<distribution>repo</distribution>
+			<url>http://www.eclipse.org/org/documents/epl-v10.html</url>
+		</license>
+	</licenses>
 	<developers>
 		<developer>
 			<id>emersonloureiro</id>
@@ -15,9 +28,9 @@
 		</developer>
 	</developers>
 	<scm>
-		<url>https://github.com/emersonloureiro/java-fire.git</url>
-		<connection>https://github.com/emersonloureiro/java-fire.git</connection>
-		<developerConnection>scm:git:https://github.com/emersonloureiro/java-fire.git</developerConnection>
+		<connection>scm:git:git@github.com:jangasoft/java-fire.git</connection>
+		<developerConnection>scm:git:git@github.com:jangasoft/java-fire.git</developerConnection>
+		<url>git@github.com:jangasoft/java-fire.git</url>
 	</scm>
 	<modules>
 		<module>java-fire-core</module>
@@ -55,15 +68,41 @@
 		</dependencies>
 	</dependencyManagement>
 	<build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-        </plugins>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

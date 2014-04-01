@@ -1,14 +1,22 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Emerson Loureiro.
+ * 
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License v1.0 which
+ * accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html.
+ * 
+ * Contributors:
+ *    Emerson Loureiro - initial API, implementation, and documentation
+ *******************************************************************************/
 package cf.janga.javafire.eventing.core;
 
+import junit.framework.TestCase;
 import cf.janga.javafire.annotations.Handle;
-import cf.janga.javafire.eventing.core.EventException;
-import cf.janga.javafire.eventing.core.EventImpl;
-import cf.janga.javafire.eventing.core.HandlerImpl;
 import cf.janga.javafire.eventing.utils.EventingUtils;
 import cf.janga.javafire.tests.SampleClassBasedSingleEventListener;
 import cf.janga.javafire.tests.SampleEvent;
 import cf.janga.javafire.tests.SampleInstanceBasedEventListener;
-import junit.framework.TestCase;
 
 public class HandlerImplTest extends TestCase {
 
@@ -31,8 +39,7 @@ public class HandlerImplTest extends TestCase {
 		// Check when an exception is thrown when handling
 		// the event
 		SampleHandlerWithException handlerWithException = new SampleHandlerWithException();
-		this.handlerWrapper = new HandlerImpl(handlerWithException, EventingUtils.getHandlerMethods(
-				handlerWithException.getClass()).get(0));
+		this.handlerWrapper = new HandlerImpl(handlerWithException, EventingUtils.getHandlerMethods(handlerWithException.getClass()).get(0));
 		try {
 			this.handlerWrapper.handle(new EventImpl(new SampleEvent()));
 			fail("EventException was expected");
@@ -49,8 +56,8 @@ public class HandlerImplTest extends TestCase {
 		assertEquals(2, SampleClassBasedSingleEventListener.sampleEventsHandled);
 		// Check when an exception is thrown when handling
 		// the event
-		this.handlerWrapper = new HandlerImpl(SampleHandlerWithException.class, EventingUtils.getHandlerMethods(
-				SampleHandlerWithException.class).get(0));
+		this.handlerWrapper = new HandlerImpl(SampleHandlerWithException.class, EventingUtils.getHandlerMethods(SampleHandlerWithException.class)
+				.get(0));
 		try {
 			this.handlerWrapper.handle(new EventImpl(new SampleEvent()));
 			fail("EventException was expected");

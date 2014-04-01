@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Emerson Loureiro.
+ * 
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License v1.0 which
+ * accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html.
+ * 
+ * Contributors:
+ *    Emerson Loureiro - initial API, implementation, and documentation
+ *******************************************************************************/
 package cf.janga.javafire.eventing.core;
 
 import java.lang.reflect.Method;
@@ -5,7 +16,6 @@ import java.lang.reflect.Method;
 import org.apache.commons.lang.UnhandledException;
 
 import cf.janga.javafire.annotations.Event.DuplicateResolution;
-import cf.janga.javafire.annotations.Event.EventType;
 import cf.janga.javafire.eventing.utils.EventingUtils;
 
 /**
@@ -31,11 +41,6 @@ class EventImpl implements Event {
 		} catch (Exception e) {
 			throw new UnhandledException("Error getting key for event " + this.event.getClass(), e);
 		}
-	}
-
-	@Override
-	public boolean isSynchronous() {
-		return EventingUtils.getEventAnnotation(this.event.getClass()).type() == EventType.SYNCHRONOUS;
 	}
 
 	@Override

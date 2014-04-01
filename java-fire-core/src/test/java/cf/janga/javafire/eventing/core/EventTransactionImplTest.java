@@ -1,14 +1,22 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Emerson Loureiro.
+ * 
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License v1.0 which
+ * accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html.
+ * 
+ * Contributors:
+ *    Emerson Loureiro - initial API, implementation, and documentation
+ *******************************************************************************/
 package cf.janga.javafire.eventing.core;
 
+import junit.framework.TestCase;
 import cf.janga.javafire.annotations.Event;
-import cf.janga.javafire.annotations.EventKey;
 import cf.janga.javafire.annotations.Event.DuplicateResolution;
-import cf.janga.javafire.eventing.core.EventImpl;
-import cf.janga.javafire.eventing.core.EventTransactionImpl;
-import cf.janga.javafire.eventing.core.TransactionException;
+import cf.janga.javafire.annotations.EventKey;
 import cf.janga.javafire.tests.SampleEvent;
 import cf.janga.javafire.tests.SampleSynchronousEvent;
-import junit.framework.TestCase;
 
 public class EventTransactionImplTest extends TestCase {
 

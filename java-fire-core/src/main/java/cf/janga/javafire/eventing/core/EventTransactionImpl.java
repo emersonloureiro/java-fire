@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Emerson Loureiro.
+ * 
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License v1.0 which
+ * accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html.
+ * 
+ * Contributors:
+ *    Emerson Loureiro - initial API, implementation, and documentation
+ *******************************************************************************/
 package cf.janga.javafire.eventing.core;
 
 import java.util.LinkedHashSet;
@@ -57,7 +68,7 @@ class EventTransactionImpl implements InternalEventTransaction {
 	}
 
 	@Override
-	public void rollback() throws TransactionException {
+	public void rollback() {
 		this.synchronousEventQueue.clear();
 		this.status = TransactionStatus.ROLLED_BACK;
 		EventBus.transactionRolledback(this);
@@ -75,9 +86,7 @@ class EventTransactionImpl implements InternalEventTransaction {
 		}
 		if (!this.firedEventIds.contains(event.getId()) || event.isLastEventWins()) {
 			this.firedEventIds.add(event.getId());
-			if (event.isSynchronous()) {
-				this.synchronousEventQueue.add(event);
-			}
+			this.synchronousEventQueue.add(event);
 		}
 	}
 

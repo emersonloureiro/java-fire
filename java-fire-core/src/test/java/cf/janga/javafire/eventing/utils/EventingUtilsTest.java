@@ -1,12 +1,21 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Emerson Loureiro.
+ * 
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License v1.0 which
+ * accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html.
+ * 
+ * Contributors:
+ *    Emerson Loureiro - initial API, implementation, and documentation
+ *******************************************************************************/
 package cf.janga.javafire.eventing.utils;
 
+import junit.framework.TestCase;
 import cf.janga.javafire.annotations.Event;
+import cf.janga.javafire.annotations.Event.DuplicateResolution;
 import cf.janga.javafire.annotations.EventKey;
 import cf.janga.javafire.annotations.Handle;
-import cf.janga.javafire.annotations.Event.DuplicateResolution;
-import cf.janga.javafire.annotations.Event.EventType;
-import cf.janga.javafire.eventing.utils.EventingUtils;
-import junit.framework.TestCase;
 
 @SuppressWarnings("unused")
 public class EventingUtilsTest extends TestCase {
@@ -14,12 +23,10 @@ public class EventingUtilsTest extends TestCase {
 	public void testGetEventAnnotation() {
 		// Checking the default case
 		Event eventAnnotation = EventingUtils.getEventAnnotation(SampleEventWithDefaultValues.class);
-		assertEquals(eventAnnotation.type(), EventType.SYNCHRONOUS);
 		assertEquals(eventAnnotation.duplicateResolution(), DuplicateResolution.FIRST_WINS);
 		// Checking when parameters are defined in the
 		// annotations
 		eventAnnotation = EventingUtils.getEventAnnotation(SampleSynchronousEvent.class);
-		assertEquals(eventAnnotation.type(), EventType.SYNCHRONOUS);
 		assertEquals(eventAnnotation.duplicateResolution(), DuplicateResolution.LAST_WINS);
 		// Checking when a class inherits from an annotated one,
 		// we shouldn't inherit the annotations
@@ -180,7 +187,7 @@ public class EventingUtilsTest extends TestCase {
 	private class SampleEventWithDefaultValues {
 	}
 
-	@Event(type = EventType.SYNCHRONOUS, duplicateResolution = DuplicateResolution.LAST_WINS)
+	@Event(duplicateResolution = DuplicateResolution.LAST_WINS)
 	private class SampleSynchronousEvent {
 	}
 
