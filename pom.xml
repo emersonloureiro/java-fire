@@ -27,9 +27,9 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>scm:git:git@github.com:jangasoft/java-fire.git</connection>
-		<developerConnection>scm:git:git@github.com:jangasoft/java-fire.git</developerConnection>
-		<url>git@github.com:jangasoft/java-fire.git</url>
+		<connection>scm:git:emersonloureiro@github.com:jangasoft/java-fire.git</connection>
+		<developerConnection>scm:git:emersonloureiro@github.com:jangasoft/java-fire.git</developerConnection>
+		<url>emersonloureiro@github.com:jangasoft/java-fire.git</url>
 	</scm>
 	<modules>
 		<module>java-fire-core</module>
