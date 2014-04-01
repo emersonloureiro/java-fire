@@ -20,7 +20,7 @@ package cf.janga.javafire.eventing.core;
  * 
  * @author Emerson Loureiro
  */
-public interface Event {
+interface Event {
 
 	/**
 	 * Returns the key of this event.

@@ -5,3 +5,6 @@
 .settings/
 .project
 **/.gitignore
+**/*.next
+**/*.releaseBackup
+**/*.tag
