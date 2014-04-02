@@ -36,10 +36,25 @@
 <ul>
 <li>Publish-subscribe: publish (fire) events and have them delivered and processed by registered listeners;</li>
 <li>Transactionality: events are fired only within a transaction, and aren't delivered to listeners until the transaction is committed.</li>
-</ul><p><strong>Latest stable release is 1.0.1. You can download it <a href="https://github.com/jangasoft/java-fire/releases/download/v1.0.1/java-fire-core-1.0.1.jar">here</a>.</strong></p>
+</ul><h2>
+<a name="obtaining-java-fire" class="anchor" href="#obtaining-java-fire"><span class="octicon octicon-link"></span></a>Obtaining Java Fire</h2>
+
+<p>The current stable release is 1.0.2. Java Fire artefacts are now being hosted at the <a href="http://central.sonatype.org/">Central Repository</a>. The easiest way to obtain it now is to add the corresponding dependencies on your project.</p>
+
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;cf.janga&lt;/groupId&gt;
+  &lt;artifactId&gt;janga-fire-core&lt;/artifactId&gt;
+  &lt;version&gt;1.0.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>If you wish to download it manually, you can do so through <a href="https://oss.sonatype.org/content/groups/public/cf/janga/java-fire-core/1.0.2/java-fire-core-1.0.2.jar">here</a>.</p>
 
 <h2>
-<a name="first-things-first" class="anchor" href="#first-things-first"><span class="octicon octicon-link"></span></a>First Things First</h2>
+<a name="using-java-fire" class="anchor" href="#using-java-fire"><span class="octicon octicon-link"></span></a>Using Java Fire</h2>
+
+<h3>
+<a name="first-things-first" class="anchor" href="#first-things-first"><span class="octicon octicon-link"></span></a>First Things First</h3>
 
 <p>Before moving on, some basic concepts and terms used throughout this "tutorial".</p>
 
@@ -48,10 +63,7 @@
 <li>Handler: Handles fired events. For that, it must be registered against the event types it is interested in. From this point on, we'll use the term process an event to indicate an event being passed on to a handler;</li>
 <li>Event Bus: Where events are fired, and eventually delivered to registered handlers;</li>
 <li>Transaction: Events can only be fired and delivered to handlers within the scope of a transaction. You can start/commit/rollback a transaction, just like the database ones. Events won't be processed until a transaction is committed.</li>
-</ul><h2>
-<a name="hands-on" class="anchor" href="#hands-on"><span class="octicon octicon-link"></span></a>Hands on</h2>
-
-<p>Most of the programming involved in Java Fire is around annotations. There's simply no interface to implement or abstract class to extend. </p>
+</ul><p>Most of the programming involved in Java Fire is around annotations. There's simply no interface to implement or abstract class to extend. </p>
 
 <h3>
 <a name="defining-events" class="anchor" href="#defining-events"><span class="octicon octicon-link"></span></a>Defining Events</h3>
@@ -193,14 +205,14 @@ try {
 </code></pre>
 
 <h2>
-<a name="binaries" class="anchor" href="#binaries"><span class="octicon octicon-link"></span></a>Binaries</h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
-<p>You can download the binaries from <a href="https://github.com/jangasoft/java-fire/releases">here</a>. The latest stable release is 1.0.1, available directly <a href="https://github.com/jangasoft/java-fire/releases/download/v1.0.1/java-fire-core-1.0.1.jar">here</a>. You can also download the source for any of the versions and generate the binaries yourself. The minimum requirements are:</p>
+<p>The minimum requirements are:</p>
 
 <ul>
 <li>Java 6</li>
 <li>Maven 3.0.4</li>
-</ul><p>Once you've checked out the source code, open a command line prompt and run a <code>mvn clean install</code>. This should get you the binaries and source on you local repository. A <code>mvn deploy</code> should let you deploy to your remote repository.</p>
+</ul><p>Once you've cloned the repository, open a command prompt and run a <code>mvn clean install</code> to make sure you're all sorted. Do your code changes and then submit a patch to any relevant project owner. Once approved, you're free to push.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jangasoft">jangasoft</a></p>
