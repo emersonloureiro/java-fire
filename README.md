@@ -16,7 +16,3 @@ The latest stable release is 1.0.2. The easiest way to obtain it is through the 
 ```
 
 More information on the project can be found at http://jangasoft.github.io/java-fire.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/java-fire/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
