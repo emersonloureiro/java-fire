@@ -72,10 +72,10 @@
 
 <div class="highlight highlight-java"><pre><span class="nd">@Event</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SomeEvent</span> <span class="o">{</span>
-<span class="nd">@EventKey</span>
-<span class="kd">public</span> <span class="n">String</span> <span class="nf">getSomeProperty</span><span class="o">()</span> <span class="o">{</span>
-<span class="c1">// ...</span>
-<span class="o">}</span>
+    <span class="nd">@EventKey</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getSomeProperty</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// ...</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 
@@ -96,26 +96,26 @@
 <p>Unlike events, handlers have no need for class-level annotations. All it's needed is to annotate a method with the <a href="https://github.com/Handle" class="user-mention">@Handle</a> annotation. The only constraints in this sense are that: 1) the method has to be public - duh, 2) the method must return void, and 3) it must take a single argument, whose type is the class of the event that the method is supposed to handle. The class of the parameter has to, obviously, be properly annotated as an event type, or else the framework will throw an error when registering the handler. </p>
 
 <div class="highlight highlight-java"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SomeEventListener</span> <span class="o">{</span>
-<span class="nd">@Handle</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleSomeEvent</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">// Do your stuff here!</span>
-<span class="c1">// ...</span>
-<span class="o">}</span>
-<span class="c1">// These won't be valid handlers</span>
-<span class="nd">@Handle</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleObjectEvent</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">// ...</span>
-<span class="o">}</span>
-<span class="nd">@Handle</span>
-<span class="kd">public</span> <span class="n">String</span> <span class="nf">handleSomeOtherEvent</span><span class="o">(</span><span class="n">SomeOtherEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">// ...</span>
-<span class="k">return</span> <span class="n">aString</span><span class="o">;</span>
-<span class="o">}</span>
-<span class="nd">@Handle</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleYetAnotherEvent</span><span class="o">(</span><span class="n">YetAnotherEvent</span> <span class="n">event</span><span class="o">,</span> <span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">// Do your stuff here!</span>
-<span class="c1">// ...</span>
-<span class="o">}</span>
+    <span class="nd">@Handle</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleSomeEvent</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Do your stuff here!</span>
+        <span class="c1">// ...</span>
+    <span class="o">}</span>
+    <span class="c1">// These won't be valid handlers</span>
+    <span class="nd">@Handle</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleObjectEvent</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// ...</span>
+    <span class="o">}</span>
+    <span class="nd">@Handle</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">handleSomeOtherEvent</span><span class="o">(</span><span class="n">SomeOtherEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="n">aString</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nd">@Handle</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleYetAnotherEvent</span><span class="o">(</span><span class="n">YetAnotherEvent</span> <span class="n">event</span><span class="o">,</span> <span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Do your stuff here!</span>
+        <span class="c1">// ...</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 
@@ -146,30 +146,30 @@
 
 <div class="highlight highlight-java"><pre><span class="n">EventTransaction</span> <span class="n">transaction</span> <span class="o">=</span> <span class="n">EventBus</span><span class="o">.</span><span class="na">startTransaction</span><span class="o">();</span>
 <span class="k">try</span> <span class="o">{</span>
-<span class="c1">// Do stuff...</span>
-<span class="o">...</span>
-<span class="c1">// Events are now processed and delivered</span>
-<span class="c1">// to registered handlers</span>
-<span class="n">transaction</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="c1">// Do stuff...</span>
+    <span class="o">...</span>
+    <span class="c1">// Events are now processed and delivered</span>
+    <span class="c1">// to registered handlers</span>
+    <span class="n">transaction</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
 <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">// All events fired within the transaction</span>
-<span class="c1">// are cleared and nothing gets processed</span>
-<span class="n">transaction</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+    <span class="c1">// All events fired within the transaction</span>
+    <span class="c1">// are cleared and nothing gets processed</span>
+    <span class="n">transaction</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
 <span class="o">}</span>
 </pre></div>
 
 <p>Another way to get a transaction started is automatically, when the "automatic transaction start" property is set to true - which is the default. What this means is that, whenever an event is fired, if a transaction doesn't exist for the current thread, one will be created and the event then fired. A reference to the transaction, in this case, can be obtained via the EventBus too. </p>
 
 <div class="highlight highlight-java"><pre><span class="k">try</span> <span class="o">{</span>
-<span class="c1">// New transaction started automatically</span>
-<span class="c1">// here if one doesn't exist for the current</span>
-<span class="c1">// thread</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
-<span class="c1">// A reference to the current transaction</span>
-<span class="c1">// can always be obtained for commits/rollbacks</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+    <span class="c1">// New transaction started automatically</span>
+    <span class="c1">// here if one doesn't exist for the current</span>
+    <span class="c1">// thread</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
+    <span class="c1">// A reference to the current transaction</span>
+    <span class="c1">// can always be obtained for commits/rollbacks</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
 <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
 <span class="o">}</span>
 </pre></div>
 
@@ -177,13 +177,13 @@
 
 <div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">setAutomaticTransactionStart</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 <span class="k">try</span> <span class="o">{</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
 <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">EventException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">// No transaction started automatically</span>
-<span class="c1">// here, so exception will be raised</span>
+    <span class="c1">// No transaction started automatically</span>
+    <span class="c1">// here, so exception will be raised</span>
 <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
 <span class="o">}</span>
 </pre></div>
 
