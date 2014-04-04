@@ -1,3 +1,5 @@
+# Java-fire [![Build Status](https://travis-ci.org/jangasoft/java-fire.svg?branch=master)](https://travis-ci.org/jangasoft/java-fire)
+
 Java Fire is a event framework and platform, providing:
 
 * Publish-subscribe: publish (fire) events and have them delivered and processed by registered listeners;
