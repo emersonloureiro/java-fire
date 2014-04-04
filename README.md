@@ -1,4 +1,4 @@
-# Java Fire [![Build Status](https://travis-ci.org/jangasoft/java-fire.svg?branch=master)](https://travis-ci.org/jangasoft/java-fire) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/java-fire/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# Java Fire [![Build Status](https://travis-ci.org/jangasoft/java-fire.svg?branch=master)](https://travis-ci.org/jangasoft/java-fire)  [![Coverage Status](https://coveralls.io/repos/jangasoft/java-fire/badge.png)](https://coveralls.io/r/jangasoft/java-fire) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/java-fire/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Java Fire is a event framework and platform, providing:
 
