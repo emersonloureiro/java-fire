@@ -70,139 +70,122 @@
 
 <p>There are two main annotations for defining events <a href="https://github.com/Event" class="user-mention">@Event</a> and @EventKey. <a href="https://github.com/Event" class="user-mention">@Event</a> is a class-level annotation, and - as the name indicates! - it says that the annotated class is an event type (i.e., things that can be fired through the Event Bus). @EventKey, on the other hand, is a method-level annotation, and it's used to indicate the method from an event type that returns the event key, which is a what differentiates an event from others of the same type. These two annotations are the bare minimum required when defining an event. When a class is annotated with them, we say that it then refers to a valid event type. </p>
 
-<pre><code>@Event
-public class SomeEvent {
-    @EventKey
-    public String getSomeProperty() {
-        // ...
-    }
-}
-</code></pre>
+<div class="highlight highlight-java"><pre><span class="nd">@Event</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SomeEvent</span> <span class="o">{</span>
+<span class="nd">@EventKey</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">getSomeProperty</span><span class="o">()</span> <span class="o">{</span>
+<span class="c1">// ...</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
 
-<p>Events in Java Fire comes - so far - in one flavour, synchronous. This means that, once a transaction is committed, all fired events are processed within the same thread they were fired. A parameter in the <a href="https://github.com/Event" class="user-mention">@Event</a> annotation is used to mark an event as synchronous. This is the default value though, so it doesn't really need to be provided. The code snippet below illustrates that. </p>
+<p>Event processing in Java Fire - so far - happens only synchronously. This means that, once a transaction is committed, all fired events are processed within the same thread they were fired. Because events aren't processed by registered handlers until the end of a transaction, events representing the same change can be fired. It's because of this that the @EventKey annotation and the duplicateResolution value of the <a href="https://github.com/Event" class="user-mention">@Event</a> annotation exist. Essentially, when two events having the same event key are fired within the same transaction, the value of duplicateResolution will determine which event gets to be processed at the end of the transaction. DuplicateResolution.FIRST_WINS means the first event fired gets to be processed, and all others with the same key will be ignored. DuplicateResolution.LAST_WINS is the opposite, so the last event fired always get to be processed, "overriding" previously fired ones with the same key. </p>
 
-<pre><code>// No need to explicitly specify synchronous here, it is the
-// default value.
-@Event
-public class SomeAsynchronousEvent {
-        // ...
-}
-
-// You can put the type there explicitly, if you like!
-@Event(type = EventType.SYNCHRONOUS)
-public class AnotherSynchronousEvent {
-        // ...
-}
-</code></pre>
-
-<p>Because events aren't processed by registered handlers until the end of a transaction, events representing the same change can be fired. It's because of this that the @EventKey annotation and the duplicateResolution value of the <a href="https://github.com/Event" class="user-mention">@Event</a> annotation exist. Essentially, when two events having the same event key are fired within the same transaction, the value of duplicateResolution will determine which event gets to be processed at the end of the transaction. DuplicateResolution.FIRST_WINS means the first event fired gets to be processed, and all others with the same key will be ignored. DuplicateResolution.LAST_WINS is the opposite, so the last event fired always get to be processed, "overriding" previously fired ones with the same key. </p>
-
-<pre><code>@Event(duplicateResolution = DuplicateResolution.LAST_WINS)
-public class LastWinsEvent {
-}
-...
-@Event(duplicateResolution = DuplicateResolution.FIRST_WINS)
-public class FirstWinsEvent {
-}
-</code></pre>
+<div class="highlight highlight-java"><pre><span class="nd">@Event</span><span class="o">(</span><span class="n">duplicateResolution</span> <span class="o">=</span> <span class="n">DuplicateResolution</span><span class="o">.</span><span class="na">LAST_WINS</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LastWinsEvent</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="o">...</span>
+<span class="nd">@Event</span><span class="o">(</span><span class="n">duplicateResolution</span> <span class="o">=</span> <span class="n">DuplicateResolution</span><span class="o">.</span><span class="na">FIRST_WINS</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FirstWinsEvent</span> <span class="o">{</span>
+<span class="o">}</span>
+</pre></div>
 
 <h3>
 <a name="defining-handlers" class="anchor" href="#defining-handlers"><span class="octicon octicon-link"></span></a>Defining Handlers</h3>
 
 <p>Unlike events, handlers have no need for class-level annotations. All it's needed is to annotate a method with the <a href="https://github.com/Handle" class="user-mention">@Handle</a> annotation. The only constraints in this sense are that: 1) the method has to be public - duh, 2) the method must return void, and 3) it must take a single argument, whose type is the class of the event that the method is supposed to handle. The class of the parameter has to, obviously, be properly annotated as an event type, or else the framework will throw an error when registering the handler. </p>
 
-<pre><code>public class SomeEventListener {
-        @Handle
-        public void handleSomeEvent(SomeEvent event) {
-                // Do your stuff here!
-                // ...
-        }
-        // These won't be valid handlers
-        @Handle
-        public void handleObjectEvent(Object object) {
-                // ...
-        }
-        @Handle
-        public String handleSomeOtherEvent(SomeOtherEvent event) {
-                // ...
-                return aString;
-        }
-        @Handle
-        public void handleYetAnotherEvent(YetAnotherEvent event, Object object) {
-                // Do your stuff here!
-                // ...
-        }
-}
-</code></pre>
+<div class="highlight highlight-java"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SomeEventListener</span> <span class="o">{</span>
+<span class="nd">@Handle</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleSomeEvent</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// Do your stuff here!</span>
+<span class="c1">// ...</span>
+<span class="o">}</span>
+<span class="c1">// These won't be valid handlers</span>
+<span class="nd">@Handle</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleObjectEvent</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// ...</span>
+<span class="o">}</span>
+<span class="nd">@Handle</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">handleSomeOtherEvent</span><span class="o">(</span><span class="n">SomeOtherEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// ...</span>
+<span class="k">return</span> <span class="n">aString</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nd">@Handle</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleYetAnotherEvent</span><span class="o">(</span><span class="n">YetAnotherEvent</span> <span class="n">event</span><span class="o">,</span> <span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// Do your stuff here!</span>
+<span class="c1">// ...</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
 
 <h3>
 <a name="registering-handlers--firing-events" class="anchor" href="#registering-handlers--firing-events"><span class="octicon octicon-link"></span></a>Registering Handlers &amp; Firing Events</h3>
 
 <p>The registration of handlers and firing of events is done through the Event Bus. To fire an event, one simply needs to pass down an instance of the event to be fired. The bus takes care of communicating with the current transaction to get that event processed when the time comes. The event instance provided to the bus must be of a class which is properly annotated as an event type - as discussed above - or else an exception is thrown. </p>
 
-<pre><code>EventBus.fire(new SampleEvent("eventkey"));
-
-// This will throw an EventException
-EventBus.fire(new Object());
-</code></pre>
+<div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SampleEvent</span><span class="o">(</span><span class="s">"eventkey"</span><span class="o">));</span>
+<span class="c1">// This will throw an EventException</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">());</span>
+</pre></div>
 
 <p>For registering handlers, there are two ways. One can either provide an instance of a class annotated with handler methods, or the class itself. The difference there is that, in the first case, the instance is always used to process the events. This means that, thread-safety is left entirely to implementors. In the second case, on the other hand, a new instance of the class is automatically created by the framework, and then used to process the event. As with the firing of events, attempting to register an object/class not properly annotated as a handler will throw an exception. </p>
 
-<pre><code>EventBus.register(new SomeEventListener());
-EventBus.register(SomeEventListener.class);
+<div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEventListener</span><span class="o">());</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">SomeEventListener</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
-// Any of these will throw an EventException
-EventBus.register(new Object());
-EventBus.register(Object.class);
-</code></pre>
+<span class="c1">// Any of these will throw an EventException</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">());</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</pre></div>
 
 <h3>
 <a name="transactions" class="anchor" href="#transactions"><span class="octicon octicon-link"></span></a>Transactions</h3>
 
 <p>As said before, events can only be fired within the scope of a transaction, which means one needs to be started before anything else. There are two ways of doing so. One is manually, via the EventBus. Doing it that way means you receive a reference to the transaction, which you can then use to perform a commit or rollback.</p>
 
-<pre><code>EventTransaction transaction = EventBus.startTransaction();
-try {
-    // Do stuff...
-    ...
-    // Events are now processed and delivered
-    // to registered handlers
-    transaction.commit();
-} catch (Exception e) {
-    // All events fired within the transaction
-    // are cleared and nothing gets processed
-    transaction.rollback();
-}
-</code></pre>
+<div class="highlight highlight-java"><pre><span class="n">EventTransaction</span> <span class="n">transaction</span> <span class="o">=</span> <span class="n">EventBus</span><span class="o">.</span><span class="na">startTransaction</span><span class="o">();</span>
+<span class="k">try</span> <span class="o">{</span>
+<span class="c1">// Do stuff...</span>
+<span class="o">...</span>
+<span class="c1">// Events are now processed and delivered</span>
+<span class="c1">// to registered handlers</span>
+<span class="n">transaction</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// All events fired within the transaction</span>
+<span class="c1">// are cleared and nothing gets processed</span>
+<span class="n">transaction</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
 
 <p>Another way to get a transaction started is automatically, when the "automatic transaction start" property is set to true - which is the default. What this means is that, whenever an event is fired, if a transaction doesn't exist for the current thread, one will be created and the event then fired. A reference to the transaction, in this case, can be obtained via the EventBus too. </p>
 
-<pre><code>try {
-    // New transaction started automatically
-    // here if one doesn't exist for the current
-    // thread
-    EventBus.fire(new SomeEvent());
-    // A reference to the current transaction
-    // can always be obtained for commits/rollbacks
-    EventBus.getCurrentTransaction().commit();
-} catch (Exception e) {
-    EventBus.getCurrentTransaction().rollback();
-}
-</code></pre>
+<div class="highlight highlight-java"><pre><span class="k">try</span> <span class="o">{</span>
+<span class="c1">// New transaction started automatically</span>
+<span class="c1">// here if one doesn't exist for the current</span>
+<span class="c1">// thread</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
+<span class="c1">// A reference to the current transaction</span>
+<span class="c1">// can always be obtained for commits/rollbacks</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
 
 <p>Given the above then, setting the "automatic transaction start" property to false and attempting to fire an event, without having manually started a transaction, will cause an exception to be thrown by the bus.</p>
 
-<pre><code>EventBus.setAutomaticTransactionStart(false);
-try {
-    EventBus.fire(new SomeEvent());
-    EventBus.getCurrentTransaction().commit();
-} catch (EventException e) {
-    // No transaction started automatically
-    // here, so exception will be raised
-} catch (Exception e) {
-    EventBus.getCurrentTransaction().rollback();
-}
-</code></pre>
+<div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">setAutomaticTransactionStart</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<span class="k">try</span> <span class="o">{</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">EventException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// No transaction started automatically</span>
+<span class="c1">// here, so exception will be raised</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
