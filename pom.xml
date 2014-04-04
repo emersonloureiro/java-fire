@@ -73,7 +73,19 @@
 			    <groupId>org.eluder.coveralls</groupId>
 			    <artifactId>coveralls-maven-plugin</artifactId>
 			    <version>2.2.0</version>
-			</plugin>		
+			</plugin>
+			<!-- Cobertura plugin so that the coveralls.io plugin above can gather coverage data -->
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>cobertura-maven-plugin</artifactId>
+			    <version>2.6</version>
+			    <configuration>
+			        <format>xml</format>
+			        <maxmem>256m</maxmem>
+			        <!-- aggregated reports for multi-module projects -->
+			        <aggregate>true</aggregate>
+			    </configuration>
+			</plugin>			
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
