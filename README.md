@@ -7,7 +7,7 @@ Java Fire is a event framework and platform, providing:
 * Publish-subscribe: publish (fire) events and have them delivered and processed by registered listeners;
 * Transactionality: events are fired only within a transaction, and aren't delivered to listeners until the transaction is committed.
 
-The latest stable release is 1.0.2. The easiest way to obtain it is through the [Central Repository](http://central.sonatype.org/). On Maven, simply add the dependency below to your project. Java Fire requires Java 7 or higher.
+The latest stable release is 1.0.2. The easiest way to obtain it is through the [Central Repository](http://central.sonatype.org/). On Maven, simply add the dependency below to your project. Java Fire requires Java 6 or higher.
 
 ```xml
 <dependency>
