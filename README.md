@@ -17,4 +17,4 @@ The latest stable release is 1.0.2. The easiest way to obtain it is through the 
 </dependency>
 ```
 
-More information on the project can be found at http://jangasoft.github.io/java-fire.
+More information on the project can be found at http://emersonloureiro.github.io/java-fire.
