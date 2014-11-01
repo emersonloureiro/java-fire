@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Java-fire by jangasoft</title>
+    <title>Java-fire by emersonloureiro</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -18,13 +18,13 @@
         <h1>Java-fire</h1>
         <p>Transactional Java-based Event Processing Framework</p>
 
-        <p class="view"><a href="https://github.com/jangasoft/java-fire">View the Project on GitHub <small>jangasoft/java-fire</small></a></p>
+        <p class="view"><a href="https://github.com/emersonloureiro/java-fire">View the Project on GitHub <small>emersonloureiro/java-fire</small></a></p>
 
 
         <ul>
-          <li><a href="https://github.com/jangasoft/java-fire/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/jangasoft/java-fire/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/jangasoft/java-fire">View On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/emersonloureiro/java-fire/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/emersonloureiro/java-fire/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/emersonloureiro/java-fire">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
@@ -36,7 +36,9 @@
 <ul>
 <li>Publish-subscribe: publish (fire) events and have them delivered and processed by registered listeners;</li>
 <li>Transactionality: events are fired only within a transaction, and aren't delivered to listeners until the transaction is committed.</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="obtaining-java-fire" class="anchor" href="#obtaining-java-fire"><span class="octicon octicon-link"></span></a>Obtaining Java Fire</h2>
 
 <p>The current stable release is 1.0.2. Java Fire artefacts are now being hosted at the <a href="http://central.sonatype.org/">Central Repository</a>. The easiest way to obtain it now is to add the corresponding dependencies on your project.</p>
@@ -63,7 +65,9 @@
 <li>Handler: Handles fired events. For that, it must be registered against the event types it is interested in. From this point on, we'll use the term process an event to indicate an event being passed on to a handler;</li>
 <li>Event Bus: Where events are fired, and eventually delivered to registered handlers;</li>
 <li>Transaction: Events can only be fired and delivered to handlers within the scope of a transaction. You can start/commit/rollback a transaction, just like the database ones. Events won't be processed until a transaction is committed.</li>
-</ul><p>Most of the programming involved in Java Fire is around annotations. There's simply no interface to implement or abstract class to extend. </p>
+</ul>
+
+<p>Most of the programming involved in Java Fire is around annotations. There's simply no interface to implement or abstract class to extend. </p>
 
 <h3>
 <a name="defining-events" class="anchor" href="#defining-events"><span class="octicon octicon-link"></span></a>Defining Events</h3>
@@ -124,18 +128,18 @@
 
 <p>The registration of handlers and firing of events is done through the Event Bus. To fire an event, one simply needs to pass down an instance of the event to be fired. The bus takes care of communicating with the current transaction to get that event processed when the time comes. The event instance provided to the bus must be of a class which is properly annotated as an event type - as discussed above - or else an exception is thrown. </p>
 
-<div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SampleEvent</span><span class="o">(</span><span class="s">"eventkey"</span><span class="o">));</span>
+<div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="nf">SampleEvent</span><span class="o">(</span><span class="s">"eventkey"</span><span class="o">));</span>
 <span class="c1">// This will throw an EventException</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">());</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="nf">Object</span><span class="o">());</span>
 </pre></div>
 
 <p>For registering handlers, there are two ways. One can either provide an instance of a class annotated with handler methods, or the class itself. The difference there is that, in the first case, the instance is always used to process the events. This means that, thread-safety is left entirely to implementors. In the second case, on the other hand, a new instance of the class is automatically created by the framework, and then used to process the event. As with the firing of events, attempting to register an object/class not properly annotated as a handler will throw an exception. </p>
 
-<div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEventListener</span><span class="o">());</span>
+<div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">new</span> <span class="nf">SomeEventListener</span><span class="o">());</span>
 <span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">SomeEventListener</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
 <span class="c1">// Any of these will throw an EventException</span>
-<span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">());</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">new</span> <span class="nf">Object</span><span class="o">());</span>
 <span class="n">EventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </pre></div>
 
@@ -164,7 +168,7 @@
     <span class="c1">// New transaction started automatically</span>
     <span class="c1">// here if one doesn't exist for the current</span>
     <span class="c1">// thread</span>
-    <span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="nf">SomeEvent</span><span class="o">());</span>
     <span class="c1">// A reference to the current transaction</span>
     <span class="c1">// can always be obtained for commits/rollbacks</span>
     <span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
@@ -177,7 +181,7 @@
 
 <div class="highlight highlight-java"><pre><span class="n">EventBus</span><span class="o">.</span><span class="na">setAutomaticTransactionStart</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 <span class="k">try</span> <span class="o">{</span>
-    <span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="n">SomeEvent</span><span class="o">());</span>
+    <span class="n">EventBus</span><span class="o">.</span><span class="na">fire</span><span class="o">(</span><span class="k">new</span> <span class="nf">SomeEvent</span><span class="o">());</span>
     <span class="n">EventBus</span><span class="o">.</span><span class="na">getCurrentTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
 <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">EventException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// No transaction started automatically</span>
@@ -195,10 +199,12 @@
 <ul>
 <li>Java 6</li>
 <li>Maven 3.0.4</li>
-</ul><p>Once you've cloned the repository, open a command prompt and run a <code>mvn clean install</code> to make sure you're all sorted. Do your code changes and then submit a patch to any relevant project owner. Once approved, you're free to push.</p>
+</ul>
+
+<p>Once you've cloned the repository, open a command prompt and run a <code>mvn clean install</code> to make sure you're all sorted. Do your code changes and then submit a patch to any relevant project owner. Once approved, you're free to push.</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/jangasoft">jangasoft</a></p>
+        <p>This project is maintained by <a href="https://github.com/emersonloureiro">emersonloureiro</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
