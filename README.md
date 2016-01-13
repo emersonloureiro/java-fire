@@ -1,6 +1,6 @@
 # Java Fire
 
-[![Build Status](https://travis-ci.org/jangasoft/java-fire.svg?branch=master)](https://travis-ci.org/jangasoft/java-fire) [![Coverage Status](https://coveralls.io/repos/jangasoft/java-fire/badge.png?branch=master)](https://coveralls.io/r/jangasoft/java-fire?branch=master)
+[![Coverage Status](https://coveralls.io/repos/jangasoft/java-fire/badge.png?branch=master)](https://coveralls.io/r/jangasoft/java-fire?branch=master)
 
 Java Fire is a event framework and platform, providing:
 
