@@ -32,7 +32,7 @@ Before moving on, some basic concepts:
 Most of the programming involved in Java Fire is around annotations. There's simply no interface to implement or abstract class to extend. 
 
 ### Defining Events
-There are two main annotations for defining events @Event and @EventKey. @Event is a class-level annotation, and - as the name indicates! - it says that the annotated class is an event type (i.e., things that can be fired through the Event Bus). @EventKey, on the other hand, is a method-level annotation, and it's used to indicate the method from an event type that returns the event key, which is a what differentiates an event from others of the same type. These two annotations are the bare minimum required when defining an event. When a class is annotated with them, we say that it then refers to a valid event type. 
+There are two main annotations for defining events `@Event` and `@EventKey`. `@Event` is a class-level annotation, and - as the name indicates! - it says that the annotated class is an event type (i.e., things that can be fired through the Event Bus). `@EventKey`, on the other hand, is a method-level annotation, and it's used to indicate the method from an event type that returns the event key, which is a what differentiates an event from others of the same type. These two annotations are the bare minimum required when defining an event. When a class is annotated with them, we say that it then refers to a valid event type. 
 
 ```java
 @Event
@@ -44,7 +44,7 @@ public class SomeEvent {
 }
 ```
 
-Event processing in Java Fire - so far - happens only synchronously. This means that, once a transaction is committed, all fired events are processed within the same thread they were fired. Because events aren't processed by registered handlers until the end of a transaction, events representing the same change can be fired. It's because of this that the @EventKey annotation and the duplicateResolution value of the @Event annotation exist. Essentially, when two events having the same event key are fired within the same transaction, the value of duplicateResolution will determine which event gets to be processed at the end of the transaction. DuplicateResolution.FIRST_WINS means the first event fired gets to be processed, and all others with the same key will be ignored. DuplicateResolution.LAST_WINS is the opposite, so the last event fired always get to be processed, "overriding" previously fired ones with the same key. 
+Event processing in Java Fire - so far - happens only synchronously. This means that, once a transaction is committed, all fired events are processed within the same thread they were fired. Because events aren't processed by registered handlers until the end of a transaction, events representing the same change can be fired. It's because of this that the `@EventKey` annotation and the duplicateResolution value of the @Event annotation exist. Essentially, when two events having the same event key are fired within the same transaction, the value of duplicateResolution will determine which event gets to be processed at the end of the transaction. `DuplicateResolution.FIRST_WINS` means the first event fired gets to be processed, and all others with the same key will be ignored. `DuplicateResolution.LAST_WINS` is the opposite, so the last event fired always get to be processed, "overriding" previously fired ones with the same key. 
 
 ```java
 @Event(duplicateResolution = DuplicateResolution.LAST_WINS)
@@ -58,7 +58,7 @@ public class FirstWinsEvent {
 
 ### Defining Handlers
 
-Unlike events, handlers have no need for class-level annotations. All it's needed is to annotate a method with the @Handle annotation. The only constraints in this sense are that: 1) the method has to be public - duh, 2) the method must return void, and 3) it must take a single argument, whose type is the class of the event that the method is supposed to handle. The class of the parameter has to, obviously, be properly annotated as an event type, or else the framework will throw an error when registering the handler. 
+Unlike events, handlers have no need for class-level annotations. All it's needed is to annotate a method with the `@Handle` annotation. The only constraints in this sense are that: 1) the method has to be public - duh, 2) the method must return void, and 3) it must take a single argument, whose type is the class of the event that the method is supposed to handle. The class of the parameter has to, obviously, be properly annotated as an event type, or else the framework will throw an error when registering the handler. 
 
 ```java
 public class SomeEventListener {
